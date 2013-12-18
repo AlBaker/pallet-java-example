@@ -3,6 +3,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.palletops/pallet "0.8.0-RC.3"]
                  [com.palletops/pallet-vmfest "0.3.0-beta.2"]
+                 [com.palletops/java-crate "0.8.0-beta.5"]
                  [org.clojars.tbatchelli/vboxjws "4.2.4"]
                  [org.slf4j/slf4j-api "1.6.1"]
                  [ch.qos.logback/logback-core "1.0.0"]
@@ -17,5 +18,6 @@
              {:dependencies [[org.slf4j/jcl-over-slf4j "1.7.2"]]
               :exclusions [commons-logging]}}
   :local-repo-classpath true
+  :main pallet-java-example.main
   :repositories
   {"sonatype" "https://oss.sonatype.org/content/repositories/releases/"})

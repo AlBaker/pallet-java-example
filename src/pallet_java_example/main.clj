@@ -1,10 +1,9 @@
-(ns starman.main
+(ns pallet-java-example.main
   (:use [clojure.tools.cli :only (cli)]
         [clojure.pprint])
   (:gen-class :main true)
   (:require
             [pallet.api :refer [group-spec server-spec node-spec plan-fn converge lift]]
-            [pallet.java.example.pallet :as pax]
             [pallet.compute :refer [nodes images]]
             [clojure.pprint :refer [pprint]]
             [pallet.compute.vmfest :refer [add-image]]
@@ -22,7 +21,12 @@
 (defn -main [& args]
   (do
     (pvm/init-vmfest)
-    ((converge {pvm/example-group 1} :compute (:vmfest @pvm/provider))
-      (System/exit 0))
-    ))
+    (when-not (contains? (images (:vmfest @pvm/provider)) :ubuntu-13.04-64bit)
+      (println "Adding default ubuntu VM")
+      (add-image (:vmfest @pvm/provider) "https://s3.amazonaws.com/vmfest-images/ubuntu-13.04-64bit.vdi.gz"))
+    (println "Spinning up example-group virtual machine")
+    (converge {pvm/example-group 1} :compute (:vmfest @pvm/provider))
+    (println "Completed VM creation")
+    (println (nodes (:vmfest @pvm/provider)))
+    (System/exit 0)))
 
