@@ -17,6 +17,9 @@
 ;; sometimes we use VMFest (Oracle VirtualBox) for development, etc
 (def provider (ref {}))
 
+;; the pallet compute provider, such as EC2, VMFest, Docker, etc can be manipulated
+;; programmatically, as done here, or configured centrally such as via a local ~/.pallet/config.clj file
+;; there is also a lein plugin for working with them as lein tasks
 (defn init-vmfest []
   "Initializes the vmfest cloud provider"
   (dosync

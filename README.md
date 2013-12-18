@@ -6,7 +6,9 @@ See in line source code comments for instuction on the various components of Pal
 
 ## Usage
 
-Follow the instructions for pallet-vmfest and make sure you have ~/.vmfest/models/ubuntu... configured
+Follow the instructions for pallet-vmfest and make sure you have ~/.vmfest/models/ubuntu... configured.
+
+The uberjar will attempt to download it, but more information can be found.
 
 
 Create the uberjar:
