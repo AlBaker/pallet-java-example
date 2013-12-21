@@ -2,11 +2,27 @@
 
 A pallet project to illustrate the basics of configuring VMFest, using Pallet specs, and installing a Java crate.
 
-See in line source code comments for instuction on the various components of Pallet.
+See in line source code comments for instuction on the various components of [Pallet](http://palletops.com/).
+
+This project uses [Pallet-Vmfest](https://github.com/pallet/pallet-vmfest) as the Pallet compute service, i.e. the IaaS cloud provider.
 
 ## Usage
 
 Follow the instructions for pallet-vmfest and make sure you have ~/.vmfest/models/ubuntu... configured.
+
+```pallet-vmfest``` can always use web services to speak with VirtualBox, no matter the operating system.
+
+1. Turn off auth (only needs to be done once)
+  ```bash
+  $ VBoxManage setproperty websrvauthlibrary null
+  ```
+
+2. Start VirtualBox listening
+  ```shell
+  $ vboxwebsrv -t0
+  ```
+
+Once these two are setup, the project is already configured to use the VBox Web Services.
 
 The uberjar will attempt to download it, but more information can be found.
 
@@ -19,6 +35,7 @@ Create the uberjar:
 Then run it, the Pallet log statements should go to standard out:
 
     DevBook:target devuser$ java -jar pallet-java-example-0.1.0-SNAPSHOT-standalone.jar
+            
     Spinning up example-group virtual machine
     22:02:01.810 [clojure-agent-send-off-pool-0] INFO  pallet.compute.vmfest - This VMFest provider is already configured to use Web Services.
     22:02:01.811 [clojure-agent-send-off-pool-1] INFO  pallet.compute.vmfest.service - No :default-bridged-interface defined. Will chose from these options: en0: Wi-Fi (AirPort)
