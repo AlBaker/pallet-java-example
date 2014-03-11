@@ -4,7 +4,11 @@ A pallet project to illustrate the basics of configuring VMFest, using Pallet sp
 
 See in line source code comments for instuction on the various components of [Pallet](http://palletops.com/).
 
-This project uses [Pallet-Vmfest](https://github.com/pallet/pallet-vmfest) as the Pallet compute service, i.e. the IaaS cloud provider.
+This project uses [Pallet-Vmfest](https://github.com/pallet/pallet-vmfest) as the Pallet compute service, i.e. the IaaS cloud provider.  By default, it uses the automated-admin-user.  If you're on Mac OSX, you'll need to make sure your public key is available to the ssh agent, i.e.: 
+
+    ssh-add -K your-private-key-file
+
+See the [Pallet First Steps](http://palletops.com/doc/first-steps/) for more information on the authentication configuration.
 
 ## Usage
 
